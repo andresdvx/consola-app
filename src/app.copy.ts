@@ -1,22 +1,26 @@
 import fs from "fs";
+import { yarg } from "./config/adapters/yargs.adapter";
 
-const base: number = 6;
+const { b: base, l: limit, s: showTable } = yarg;
 let outPutMessge: string = "";
 const filePath: string = "src/outputs/tabla.txt";
 const header: string = `
 ==============================
         tabla del ${base}
-==============================
+==============================\n
 `;
 
-for (let i = 1; i <= 10; i++) {
+for (let i = 1; i <= limit; i++) {
   outPutMessge += `${base} X ${i} = ${base * i}\n`;
 }
 
-fs.writeFile(filePath, `${header}\n${outPutMessge}`, (err) => {
+outPutMessge = header + outPutMessge;
+
+if (showTable) console.log(outPutMessge);
+
+fs.writeFile(filePath, `${outPutMessge}`, (err) => {
   if (!err) {
     console.log("file created!!");
-    console.log(header, "\n", outPutMessge);
     return;
   }
   console.log(`error: ${err}`);

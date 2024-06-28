@@ -1,10 +1,11 @@
 import { yarg } from "./config/adapters/yargs.adapter";
+import ServerApp from "./presentation/server-app";
 
 (async () => {
   await main();
-  console.log('fin del programa');
 })();
 
 async function main(){
-    console.log(yarg);
+  console.log(yarg);
+  ServerApp.run();
 }

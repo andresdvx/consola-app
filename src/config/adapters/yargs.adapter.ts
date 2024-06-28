@@ -11,6 +11,7 @@ export const yarg = yargs(hideBin(process.argv))
   .options("l", {
     alias: "limit",
     type: "number",
+    demandOption: true,
     default: 10,
     describe: "multiplicación tabla limit",
   })
@@ -21,7 +22,6 @@ export const yarg = yargs(hideBin(process.argv))
     describe: "multiplicación tabla show",
   })
   .check((argv, options) => {
-    console.log(typeof argv.b);
     if (argv.b < 1) throw new Error("Error: base must be greater than 0");
     return true;
   })
