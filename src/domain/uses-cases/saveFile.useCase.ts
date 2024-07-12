@@ -12,7 +12,11 @@ export interface Options {
 export class SaveFile implements SaveFileUseCase {
   constructor() {}
 
-  execute({ fileContent, fileDestination, fileName }: Options): boolean {
+  execute({
+    fileContent,
+    fileDestination = "outputs",
+    fileName = "table",
+  }: Options): boolean {
     try {
       fs.mkdirSync(`${fileDestination}`, { recursive: true });
       fs.writeFileSync(`${fileDestination}/${fileName}.txt`, fileContent);
