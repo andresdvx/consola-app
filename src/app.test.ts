@@ -1,5 +1,5 @@
-describe('app test',()=>{
-    test('should be true', ()=>{
-        expect(true).toBeTruthy();
-    })
-})
+describe("test", () => {
+  it("should pass", () => {
+    expect(true).toBeTruthy();
+  });
+});
